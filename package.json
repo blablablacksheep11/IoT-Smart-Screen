@@ -1,0 +1,22 @@
+{
+  "urls": [
+    ["blynklib.py", "github:blablablacksheep11/IoT-Smart-Screen/blynklib.py"],
+    ["color_setup.py", "github:blablablacksheep11/IoT-Smart-Screen/color_setup.py"],
+    ["connection.py", "github:blablablacksheep11/IoT-Smart-Screen/connection.py"],
+    ["env.py", "github:blablablacksheep11/IoT-Smart-Screen/env.py"],
+    ["smart_screen.py", "github:blablablacksheep11/IoT-Smart-Screen/smart_screen.py"],
+    ["boolpalette.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/drivers/boolpalette.py"],
+    ["st7789_4bit.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/drivers/st7789/st7789_4bit.py"],
+    ["st7789_8bit.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/drivers/st7789/st7789_8bit.py"],
+    ["__init__.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/__init__.py"],
+    ["colors.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/colors.py"],
+    ["fplot.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/fplot.py"],
+    ["nanogui.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/nanogui.py"],
+    ["writer.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/writer.py"],
+    ["montserrat20.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/fonts/montserrat20.py"],
+    ["montserrat30.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/fonts/montserrat30.py"],
+    ["montserrat40.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/fonts/montserrat40.py"],
+    ["montserrat50.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/fonts/montserrat50.py"],
+  ],
+  "version": "1.0.0"
+}
