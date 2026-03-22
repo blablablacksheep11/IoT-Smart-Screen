@@ -27,3 +27,8 @@ You many copy the source code to the board using the ```mip```.
   >>> import mip
   >>> mip.install("github:blablablacksheep11/IoT-Smart-Screen", target="/")
 ```
+## ⚠️ Configuration Reminder
+
+> [!IMPORTANT]
+> **Don't forget to update the credentials in `env.py`!**  
+> Ensure all API keys, tokens, and environment variables are correctly set before starting the application.
