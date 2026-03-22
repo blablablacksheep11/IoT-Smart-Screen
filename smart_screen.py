@@ -3,16 +3,15 @@ from gui.core.writer import Writer
 from gui.core.nanogui import refresh
 from color_setup import ssd
 from time import sleep, sleep_us, ticks_ms, ticks_us, ticks_diff
+from blynklib import Blynk
 import gui.fonts.montserrat20 as font_sm
 import gui.fonts.montserrat30 as font_md
 import gui.fonts.montserrat40 as font_lg
 import gui.fonts.montserrat50 as font_xl
 import gc
-import network
-import urequests
-import time
 import asyncio
 import env
+import connection
 
 # Turn on backlight in default
 blk_pwm = PWM(Pin(22))
@@ -24,21 +23,19 @@ wri_md = Writer(ssd, font_md)
 wri_lg = Writer(ssd, font_lg)
 wri_xl = Writer(ssd, font_xl)
 
+# Blynk object
+BLYNK = Blynk(env.BLYNK_AUTH_TOKEN, insecure=True)
+
 configs = {
     "md": (wri_md, 150),
     "lg": (wri_lg, 160),
     "xl": (wri_xl, 170)
 }
 
-# ThingSpeak endpoint
-API_KEY = env.THINGSPEAK_API_KEY
-url = "https://api.thingspeak.com/update"
-
-last_send = 0 # Track last ThingSpeak updates
+last_send = 0 # Track last Blynk updates
 
 md_threshold = 5
 lg_threshold = 15
-xl_threshold = 25
 
 # Sensors pins
 TRIG = Pin(13, Pin.OUT)
@@ -86,11 +83,11 @@ async def getDistance():
 
         # Timer end, calculate fps
         # While loop sleep time is included in calculation, +1000000
-        frame_rate = int(1000000 / (ticks_diff(ticks_us(), start_time) + 100000))
+        refresh_rate = int(1000000 / (ticks_diff(ticks_us(), start_time) + 100000))
 
         # Print fps
         Writer.set_textpos(ssd, 10, 10)
-        wri_sm.printstring(f"Frame rate:  {frame_rate} fps")
+        wri_sm.printstring(f"Refresh rate:  {refresh_rate} fps")
     
         await asyncio.sleep(0.1)
 
@@ -170,22 +167,26 @@ async def sendReq():
     
     while True:
         if last_send is 0:
-            last_send = ticks_us() # Only updates when variable reset
+            last_send = ticks_ms() # Only updates when variable reset
             
-        # Update ThingSpeak every 16 sec
-        if ticks_diff(ticks_us(), last_send) > 16000000:
+        # Update Blynk every minutes
+        if ticks_diff(ticks_ms(), last_send) > 60000:
             try:
-                response = urequests.get(f"{url}?api_key={env.THINGSPEAK_API_KEY}&field1={state.brightness}&field2={state.distance}", timeout=5)
-                if response.status_code == 200:
-                    print("Data sent to ThingSpeak!!!")
+                BLYNK.virtual_write(0, state.brightness)
+                BLYNK.virtual_write(1, state.distance)
             except Exception as e:
                 print(f"Error: {e}")
             finally:
-                if response:
-                    response.close()
+                print("Data updated to Blynk!!!")
                 last_send = 0 # Reset variable
                 
-        await asyncio.sleep(0.2)
+        await asyncio.sleep(1)
+
+# Keep Blynk connection alive
+async def blynk_maintenance():
+    while True:
+        BLYNK.run()
+        await asyncio.sleep(00.05)
         
 # Function to clear memory
 async def clearMemory():
@@ -208,22 +209,12 @@ async def main():
     task2 = asyncio.create_task(brightnessCtrl())
     task3 = asyncio.create_task(getDistance())
     task4 = asyncio.create_task(updateDisplay())
-    task5 = asyncio.create_task(sendReq())
-    task6 = asyncio.create_task(clearMemory())
+    task5 = asyncio.create_task(blynk_maintenance())
+    task6 = asyncio.create_task(sendReq())
+    task7 = asyncio.create_task(clearMemory())
     
-    await asyncio.gather(task1, task2, task3, task4, task5, task6)
+    await asyncio.gather(task1, task2, task3, task4, task5, task6, task7)
 
-# Network connection
-wlan = network.WLAN(network.STA_IF)
-wlan.active(True)
-wlan.connect(env.WIFI_NAME, env.WIFI_PASSWORD)
-
-while not wlan.isconnected():
-    print("Connecting...")
-    time.sleep(1)
-
-if wlan.isconnected():
-    print("Connected")
-    
 asyncio.run(main())
-    
+
+
