@@ -6,20 +6,20 @@
     ["env.py", "github:blablablacksheep11/IoT-Smart-Screen/env.py"],
     ["smart_screen.py", "github:blablablacksheep11/IoT-Smart-Screen/smart_screen.py"],
     
-    ["drivers/boolpalette.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/drivers/boolpalette.py"],
-    ["drivers/st7789/st7789_4bit.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/drivers/st7789/st7789_4bit.py"],
-    ["drivers/st7789/st7789_8bit.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/drivers/st7789/st7789_8bit.py"],
+    ["lib/drivers/boolpalette.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/drivers/boolpalette.py"],
+    ["lib/drivers/st7789/st7789_4bit.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/drivers/st7789/st7789_4bit.py"],
+    ["lib/drivers/st7789/st7789_8bit.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/drivers/st7789/st7789_8bit.py"],
     
-    ["gui/core/__init__.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/__init__.py"],
-    ["gui/core/colors.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/colors.py"],
-    ["gui/core/fplot.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/fplot.py"],
-    ["gui/core/nanogui.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/nanogui.py"],
-    ["gui/core/writer.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/writer.py"],
+    ["lib/gui/core/__init__.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/__init__.py"],
+    ["lib/gui/core/colors.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/colors.py"],
+    ["lib/gui/core/fplot.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/fplot.py"],
+    ["lib/gui/core/nanogui.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/nanogui.py"],
+    ["lib/gui/core/writer.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/core/writer.py"],
     
-    ["gui/fonts/montserrat20.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/fonts/montserrat20.py"],
-    ["gui/fonts/montserrat30.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/fonts/montserrat30.py"],
-    ["gui/fonts/montserrat40.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/fonts/montserrat40.py"],
-    ["gui/fonts/montserrat50.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/fonts/montserrat50.py"]
+    ["lib/gui/fonts/montserrat20.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/fonts/montserrat20.py"],
+    ["lib/gui/fonts/montserrat30.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/fonts/montserrat30.py"],
+    ["lib/gui/fonts/montserrat40.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/fonts/montserrat40.py"],
+    ["lib/gui/fonts/montserrat50.py", "github:blablablacksheep11/IoT-Smart-Screen/lib/gui/fonts/montserrat50.py"]
   ],
   "version": "1.0.0"
 }
