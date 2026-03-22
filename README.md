@@ -25,5 +25,5 @@ You many copy the source code to the board using the ```mip```.
 **Make sure your board is connected to Wi-Fi !!!**
 ```python
   >>> import mip
-  >>> mip.install("github:blablablacksheep11/IoT-Smart-Screen")
+  >>> mip.install("github:blablablacksheep11/IoT-Smart-Screen", target="/")
 ```
